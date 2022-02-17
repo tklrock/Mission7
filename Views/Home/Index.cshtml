@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model BooksViewModel
+
+<h1>The Hilton Bookstore</h1>
+
+@foreach (Book b in Model.Books)
+{
+    <div class="card card-outline-primary m-1 p-1">
+        <div class="bg-faded p-1">
+            @*Header Information*@
+            <h4>
+                @b.Title
+                <span class="badge badge-pill badge-primary" style="float:right">
+                    <small>@b.Price.ToString("c")</small>
+                </span>
+            </h4>
+        </div>
+        @*Remaining Information*@ 
+        <div>
+            <div class="card-text p-1 col-6"><b>Author: </b>@b.Author</div>
+            <div class="card-text p-1 col-6"><b>Publisher: </b>@b.Publisher</div>
+            <div class="card-text p-1 col-6"><b>ISBN: </b>@b.Isbn</div>
+            <div class="card-text p-1 col-6"><b>Classifcation: </b>@b.Classification</div>
+            <div class="card-text p-1 col-6"><b>Category: </b>@b.Category</div>
+            <div class="card-text p-1 col-6"><b># of Pages: </b>@b.PageCount</div>
+        </div>
+    </div>
+}
+
+@*Dynamic pagination links*@ 
+<div page-num="@Model.PageInfo", page-action="Index" page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary" class="btn-group pull-right m-1"></div>
